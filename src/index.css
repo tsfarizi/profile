@@ -1,16 +1,8 @@
-/* Hallmark · macrostructure: Stat-Led · tone: Renaissance · anchor hue: burgundy-gold
- * pre-emit critique: P5 H5 E5 S5 R5 V5
- * genre: editorial · theme: custom-renaissance · paper: parchment · accent: burgundy+gold
- * contrast: pass (40–41) · nav: custom · footer: custom · mobile: pass (34, 49, 50–57)
- * updated: dark mode support
- */
-
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  /* Renaissance Color Palette — Light */
   --color-parchment: #F5F0E8;
   --color-parchment-dark: #E8E0D0;
   --color-parchment-light: #FAF8F4;
@@ -30,7 +22,6 @@
   --color-sage-light: #9AAB8F;
   --color-terracotta: #C4724A;
 
-  /* Dark Mode Tokens */
   --color-d-bg: #0E1520;
   --color-d-surface: #1A2332;
   --color-d-surface-2: #243044;
@@ -39,12 +30,10 @@
   --color-d-text-muted: #9AA3B0;
   --color-d-border: #3A4A60;
 
-  /* Typography */
   --font-display: 'Cormorant Garamond', 'EB Garamond', Georgia, serif;
   --font-body: 'Lora', 'EB Garamond', Georgia, serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
-  /* Spacing Scale */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
@@ -58,31 +47,26 @@
   --space-20: 5rem;
   --space-24: 6rem;
 
-  /* Border Radius */
   --radius-sm: 0.25rem;
   --radius-md: 0.5rem;
   --radius-lg: 0.75rem;
   --radius-xl: 1rem;
 
-  /* Shadows — Light */
   --shadow-subtle: 0 1px 3px rgba(44, 36, 32, 0.08);
   --shadow-medium: 0 4px 12px rgba(44, 36, 32, 0.12);
   --shadow-elevated: 0 8px 24px rgba(44, 36, 32, 0.16);
   --shadow-dramatic: 0 16px 48px rgba(44, 36, 32, 0.2);
 
-  /* Animation Durations */
   --duration-fast: 150ms;
   --duration-normal: 300ms;
   --duration-slow: 500ms;
   --duration-dramatic: 800ms;
 
-  /* Easings */
   --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
   --ease-in: cubic-bezier(0.32, 0, 0.67, 0);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
 }
 
-/* ═══════════════ BASE ═══════════════ */
 html {
   overflow-x: clip;
   scroll-behavior: smooth;
@@ -110,7 +94,6 @@ body {
   color: var(--color-d-text);
 }
 
-/* ═══════════════ TYPOGRAPHY ═══════════════ */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
   font-weight: 600;
@@ -123,7 +106,6 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-d-text);
 }
 
-/* ═══════════════ SELECTION ═══════════════ */
 ::selection {
   background-color: var(--color-gold);
   color: var(--color-navy-dark);
@@ -133,13 +115,11 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-d-bg);
 }
 
-/* ═══════════════ FOCUS ═══════════════ */
 :focus-visible {
   outline: 2px solid var(--color-gold);
   outline-offset: 2px;
 }
 
-/* ═══════════════ SCROLLBAR ═══════════════ */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -161,7 +141,6 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--color-burgundy-light);
 }
 
-/* ═══════════════ SECTION DIVIDER ═══════════════ */
 .section-divider {
   height: 1px;
   background: var(--color-gold);
@@ -169,7 +148,6 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 0.25;
 }
 
-/* ═══════════════ ORNAMENT ═══════════════ */
 .ornament::before,
 .ornament::after {
   background: linear-gradient(90deg, var(--color-parchment), var(--color-gold), var(--color-parchment));
@@ -180,7 +158,6 @@ h1, h2, h3, h4, h5, h6 {
   background: linear-gradient(90deg, var(--color-d-bg), var(--color-gold), var(--color-d-bg));
 }
 
-/* ═══════════════ CARD HOVER ═══════════════ */
 .card-hover {
   transition: transform var(--duration-normal) var(--ease-out),
               box-shadow var(--duration-normal) var(--ease-out);
@@ -191,7 +168,6 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: var(--shadow-elevated);
 }
 
-/* ═══════════════ REDUCED MOTION ═══════════════ */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
