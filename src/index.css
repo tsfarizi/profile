@@ -1,0 +1,202 @@
+/* Hallmark · macrostructure: Stat-Led · tone: Renaissance · anchor hue: burgundy-gold
+ * pre-emit critique: P5 H5 E5 S5 R5 V5
+ * genre: editorial · theme: custom-renaissance · paper: parchment · accent: burgundy+gold
+ * contrast: pass (40–41) · nav: custom · footer: custom · mobile: pass (34, 49, 50–57)
+ * updated: dark mode support
+ */
+
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Renaissance Color Palette — Light */
+  --color-parchment: #F5F0E8;
+  --color-parchment-dark: #E8E0D0;
+  --color-parchment-light: #FAF8F4;
+  --color-burgundy: #6B1D2A;
+  --color-burgundy-light: #8B2E3D;
+  --color-burgundy-dark: #4A1420;
+  --color-gold: #C4A35A;
+  --color-gold-light: #D4B76E;
+  --color-gold-dark: #A68940;
+  --color-navy: #1A2332;
+  --color-navy-light: #2A3548;
+  --color-navy-dark: #0E1520;
+  --color-ink: #2C2420;
+  --color-ink-light: #4A4038;
+  --color-cream: #FDFBF7;
+  --color-sage: #7A8B6F;
+  --color-sage-light: #9AAB8F;
+  --color-terracotta: #C4724A;
+
+  /* Dark Mode Tokens */
+  --color-d-bg: #0E1520;
+  --color-d-surface: #1A2332;
+  --color-d-surface-2: #243044;
+  --color-d-surface-3: #2E3D54;
+  --color-d-text: #E8E0D0;
+  --color-d-text-muted: #9AA3B0;
+  --color-d-border: #3A4A60;
+
+  /* Typography */
+  --font-display: 'Cormorant Garamond', 'EB Garamond', Georgia, serif;
+  --font-body: 'Lora', 'EB Garamond', Georgia, serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Spacing Scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+
+  /* Shadows — Light */
+  --shadow-subtle: 0 1px 3px rgba(44, 36, 32, 0.08);
+  --shadow-medium: 0 4px 12px rgba(44, 36, 32, 0.12);
+  --shadow-elevated: 0 8px 24px rgba(44, 36, 32, 0.16);
+  --shadow-dramatic: 0 16px 48px rgba(44, 36, 32, 0.2);
+
+  /* Animation Durations */
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+  --duration-dramatic: 800ms;
+
+  /* Easings */
+  --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+  --ease-in: cubic-bezier(0.32, 0, 0.67, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* ═══════════════ BASE ═══════════════ */
+html {
+  overflow-x: clip;
+  scroll-behavior: smooth;
+  background-color: var(--color-parchment);
+  transition: background-color 0.3s ease;
+}
+
+html.dark {
+  background-color: var(--color-d-bg);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background-color: inherit;
+  color: var(--color-ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark body {
+  color: var(--color-d-text);
+}
+
+/* ═══════════════ TYPOGRAPHY ═══════════════ */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-navy);
+  transition: color 0.3s ease;
+}
+
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+  color: var(--color-d-text);
+}
+
+/* ═══════════════ SELECTION ═══════════════ */
+::selection {
+  background-color: var(--color-gold);
+  color: var(--color-navy-dark);
+}
+
+.dark ::selection {
+  color: var(--color-d-bg);
+}
+
+/* ═══════════════ FOCUS ═══════════════ */
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+/* ═══════════════ SCROLLBAR ═══════════════ */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-parchment-dark);
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: var(--color-d-surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-burgundy);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-burgundy-light);
+}
+
+/* ═══════════════ SECTION DIVIDER ═══════════════ */
+.section-divider {
+  height: 1px;
+  background: var(--color-gold);
+  margin: 0;
+  opacity: 0.25;
+}
+
+/* ═══════════════ ORNAMENT ═══════════════ */
+.ornament::before,
+.ornament::after {
+  background: linear-gradient(90deg, var(--color-parchment), var(--color-gold), var(--color-parchment));
+}
+
+.dark .ornament::before,
+.dark .ornament::after {
+  background: linear-gradient(90deg, var(--color-d-bg), var(--color-gold), var(--color-d-bg));
+}
+
+/* ═══════════════ CARD HOVER ═══════════════ */
+.card-hover {
+  transition: transform var(--duration-normal) var(--ease-out),
+              box-shadow var(--duration-normal) var(--ease-out);
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-elevated);
+}
+
+/* ═══════════════ REDUCED MOTION ═══════════════ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
