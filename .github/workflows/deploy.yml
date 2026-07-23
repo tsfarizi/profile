@@ -24,9 +24,13 @@ jobs:
       - name: Build
         run: bun run build
 
+      - name: Add .nojekyll
+        run: touch ./dist/.nojekyll
+
       - name: Deploy to gh-pages branch
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
           publish_branch: gh-pages
+          force_orphan: true
