@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tsfarizi.github.io/profile/sitemap.xml
