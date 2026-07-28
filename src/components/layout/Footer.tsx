@@ -27,7 +27,7 @@ export default function Footer() {
           {profile.name}
         </motion.h3>
 
-        <motion.p className={`font-body italic mb-8 text-sm md:text-base ${isDark ? 'text-d-text-muted' : 'text-parchment/60'}`} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }} transition={{ delay: 0.1 }}>
+        <motion.p className={`font-body mb-8 text-sm md:text-base ${isDark ? 'text-d-text-muted' : 'text-parchment/60'}`} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }} transition={{ delay: 0.1 }}>
           Building the future, one commit at a time
         </motion.p>
 

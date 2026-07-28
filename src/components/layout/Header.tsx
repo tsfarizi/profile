@@ -3,10 +3,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '../../context/ThemeContext';
 
 const NAV_LINKS = [
-  { id: 'hero', label: 'About' },
+  { id: 'hero', label: 'Home' },
+  { id: 'about', label: 'About' },
   { id: 'projects', label: 'Projects' },
   { id: 'skills', label: 'Skills' },
   { id: 'experience', label: 'Experience' },
+  { id: 'blog', label: 'Blog' },
+  { id: 'contact', label: 'Contact' },
 ] as const;
 
 const HEADER_HEIGHT = 64;
@@ -134,7 +137,7 @@ export default function Header() {
                   key={link.id}
                   type="button"
                   onClick={() => scrollToSection(link.id)}
-                  className="group relative px-4 py-2 font-body text-sm tracking-wide transition-colors duration-200"
+                  className="group relative px-3 py-2 font-body text-sm tracking-wide transition-colors duration-200"
                 >
                   <span className={
                     isActive
@@ -145,7 +148,7 @@ export default function Header() {
                   }>
                     {link.label}
                   </span>
-                  <span className={`absolute bottom-0 left-4 right-4 h-0.5 origin-left bg-gold transition-transform duration-300 ${isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`} />
+                  <span className={`absolute bottom-0 left-3 right-3 h-0.5 origin-left bg-gold transition-transform duration-300 ${isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`} />
                 </button>
               );
             })}
@@ -198,7 +201,7 @@ export default function Header() {
         {isMobileMenuOpen && (
           <motion.nav
             ref={mobileMenuRef}
-            className={`absolute top-16 left-0 right-0 overflow-hidden border-b-2 border-gold md:hidden ${
+            className={`absolute top-16 left-0 right-0 max-h-[70vh] overflow-y-auto border-b-2 border-gold md:hidden ${
               isDark ? 'bg-d-surface shadow-[0_8px_24px_rgba(0,0,0,0.4)]' : 'bg-parchment shadow-elevated'
             }`}
             initial={{ height: 0, opacity: 0 }}
@@ -213,7 +216,7 @@ export default function Header() {
                   type="button"
                   initial={{ x: -20, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: index * 0.06, duration: 0.25 }}
+                  transition={{ delay: index * 0.05, duration: 0.25 }}
                   onClick={() => scrollToSection(link.id)}
                   className={`rounded-lg px-4 py-3 text-left font-body text-base transition-colors duration-200 ${
                     activeSection === link.id

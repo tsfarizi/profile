@@ -3,7 +3,7 @@ import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { useTheme } from '../../context/ThemeContext';
 import { profile } from '../../data/profile';
 
-const TYPING_SUBTITLE = 'Software Engineer · Unreal Engine & C++ · Always Learning New Things';
+const TYPING_SUBTITLE = 'Software & AI Engineer · Python, TypeScript, Rust & C++ · Always Learning New Things';
 const TYPING_SPEED = 60;
 const TYPING_DELETE_SPEED = 30;
 const TYPING_PAUSE_MS = 2000;
@@ -43,7 +43,6 @@ const socialLinks = [
 ];
 
 const floatingItems = [
-  // Languages & frameworks from GitHub repos (tsfarizi)
   { text: 'React', x: 8, y: 15 },
   { text: 'Vue', x: 78, y: 12 },
   { text: 'Go', x: 15, y: 75 },
@@ -56,25 +55,15 @@ const floatingItems = [
   { text: 'C++', x: 20, y: 88 },
   { text: 'Rust', x: 75, y: 88 },
   { text: 'C#', x: 50, y: 8 },
-  // CNN — 2D Convolution
   { text: 'y = Σₘ Σₙ x(i+m, j+n) · w(m,n) + b', x: 68, y: 22, equation: true },
-  // Transformer — Scaled Dot-Product Attention
   { text: 'Attention(Q,K,V) = softmax(QKᵀ / √dₖ) · V', x: 8, y: 28, equation: true },
-  // Autoencoder — Encoder-Decoder + Reconstruction Loss
   { text: 'z = E(x̂),  x̂ = D(z),  L = ‖z − z̃‖²', x: 72, y: 65, equation: true },
-  // RNN — Hidden State Recurrence
   { text: 'hₜ = tanh(Wₓₕ · xₜ + Wₕₕ · hₜ₋₁ + b)', x: 10, y: 12, equation: true },
-  // ResNet — Skip / Residual Connection
   { text: 'y = F(x, {Wᵢ}) + x', x: 82, y: 60, equation: true },
-  // Softmax — Output Activation
   { text: 'σ(zᵢ) = eᶻⁱ / Σⱼ eᶻʲ', x: 60, y: 4, equation: true },
-  // GAN — Minimax Adversarial Objective
   { text: 'min_G max_D 𝔼[log D(x)] + 𝔼[log(1 − D(G(z)))]', x: 78, y: 35, equation: true },
-  // Cross-Entropy — Classification Loss
   { text: 'L = −Σᵢ yᵢ log(ŷᵢ)', x: 10, y: 72, equation: true },
-  // SGD — Stochastic Gradient Descent
   { text: 'θ ← θ − η · ∇L(θ)', x: 60, y: 82, equation: true },
-  // Batch Normalization
   { text: 'x̂ᵢ = (xᵢ − μᴮ) / √(σ²ᴮ + ε)', x: 35, y: 68, equation: true },
 ];
 
@@ -176,7 +165,7 @@ export default function Hero() {
 
         <motion.div className="mt-5 flex items-center gap-3" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.75 }}>
           <motion.a href="#projects" whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="px-5 py-2.5 bg-burgundy text-cream font-body text-base font-medium rounded-lg hover:bg-burgundy-light transition-colors">Projects</motion.a>
-          <motion.a href="#experience" whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="px-5 py-2.5 border border-gold text-burgundy font-body text-base font-medium rounded-lg hover:bg-gold/10 transition-colors">Journey</motion.a>
+          <motion.a href="#about" whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="px-5 py-2.5 border border-gold text-burgundy font-body text-base font-medium rounded-lg hover:bg-gold/10 transition-colors">About Me</motion.a>
         </motion.div>
       </div>
 

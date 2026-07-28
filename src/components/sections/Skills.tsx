@@ -1,19 +1,35 @@
 import { motion } from 'framer-motion';
-import { skills } from '../../data/profile';
+import { skills, type SkillItem } from '../../data/profile';
 import { useTheme } from '../../context/ThemeContext';
+
+function ProficiencyDots({ level, isDark }: { level: number; isDark: boolean }) {
+  return (
+    <div className="flex gap-1 mt-1.5">
+      {Array.from({ length: 5 }, (_, i) => (
+        <div
+          key={i}
+          className={`h-1.5 w-1.5 rounded-full transition-colors duration-300 ${
+            i < level
+              ? isDark ? 'bg-gold' : 'bg-burgundy'
+              : isDark ? 'bg-d-surface-3' : 'bg-parchment-dark'
+          }`}
+        />
+      ))}
+    </div>
+  );
+}
 
 export default function Skills() {
   const { theme } = useTheme();
   const isDark = theme === 'dark';
 
-  const skillGroups = [
-    { key: 'frontend' as const, label: 'Frontend', items: skills.frontend, gridClass: 'sm:row-span-2' },
-    { key: 'languages' as const, label: 'Languages', items: skills.languages, gridClass: 'sm:col-span-2' },
-    { key: 'ml' as const, label: 'ML/AI & Data', items: skills.ml, gridClass: '' },
-    { key: 'unreal' as const, label: 'Unreal Engine', items: skills.unreal, gridClass: '' },
-    { key: 'backend' as const, label: 'Backend', items: skills.backend, gridClass: 'sm:col-span-2' },
-    { key: 'devops' as const, label: 'DevOps', items: skills.devops, gridClass: '' },
-    { key: 'patterns' as const, label: 'Design Pattern & Paradigm', items: skills.patterns, gridClass: 'sm:col-span-3' },
+  const skillGroups: { key: string; label: string; items: SkillItem[]; gridClass: string }[] = [
+    { key: 'frontend', label: 'Frontend', items: skills.frontend, gridClass: 'sm:row-span-2' },
+    { key: 'languages', label: 'Languages', items: skills.languages, gridClass: 'sm:col-span-2' },
+    { key: 'ml', label: 'ML/AI & Data', items: skills.ml, gridClass: '' },
+    { key: 'backend', label: 'Backend', items: skills.backend, gridClass: 'sm:col-span-2' },
+    { key: 'devops', label: 'DevOps', items: skills.devops, gridClass: '' },
+    { key: 'patterns', label: 'Design Pattern & Paradigm', items: skills.patterns, gridClass: 'sm:col-span-3' },
   ];
 
   return (
@@ -57,17 +73,22 @@ export default function Skills() {
 
               <div className="flex flex-wrap gap-2">
                 {group.items.map((skill, j) => (
-                  <motion.span
+                  <motion.div
                     key={skill.name}
-                    className={`font-body text-xs sm:text-sm px-3 py-1.5 rounded-lg font-medium transition-colors border ${isDark ? 'bg-gold/10 text-gold border-gold/30 hover:bg-gold/20' : 'bg-burgundy/10 text-burgundy border-burgundy/20 hover:bg-burgundy/20'}`}
+                    className="flex flex-col"
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.08 + j * 0.04 }}
-                    whileHover={{ scale: 1.08, y: -2 }}
                   >
-                    {skill.name}
-                  </motion.span>
+                    <motion.span
+                      className={`font-body text-xs sm:text-sm px-3 py-1.5 rounded-lg font-medium transition-colors border ${isDark ? 'bg-gold/10 text-gold border-gold/30 hover:bg-gold/20' : 'bg-burgundy/10 text-burgundy border-burgundy/20 hover:bg-burgundy/20'}`}
+                      whileHover={{ scale: 1.08, y: -2 }}
+                    >
+                      {skill.name}
+                    </motion.span>
+                    <ProficiencyDots level={skill.level} isDark={isDark} />
+                  </motion.div>
                 ))}
               </div>
             </motion.div>
